@@ -12,11 +12,14 @@ body {
   height: 60vh;
 }
 
-.slide{
-    font-family: sans-serif;
+a{
     font-size: 50px;
     text-decoration: none;
     color: #222;
+}
+
+.slide{
+    font-family: sans-serif;
     position: relative; /*va avoir des enfants en position absolute*/
 }
 
@@ -37,4 +40,28 @@ body {
     /*quand on hover, le point d'origine repasse à 0 sur x et grandit par la gauche, quand on retire la souris, il retourne à 100% et scale 0, ce ui donne l'effet de slide */
     transform-origin: 0 0;
     transform: scaleX(1);
+}
+
+.download{
+    font-family: "Staatliches";
+    overflow: hidden;
+    position: relative;
+}
+
+.download span{
+    padding: 10px;
+    display: inline-block; /*il peut y avoir des bugs avec les transition sur les elements de type inline*/
+    transition: transform 0.3s ease-out;
+}
+
+.download span:nth-child(2){
+    position: absolute;
+    width: 100%;
+    /*comme il y a un overflow hidden sur le parent et qu'il dépasse on ne le voit pas mais il est bien là*/
+    left: 100%;
+    text-align: center;
+}
+
+.download:hover span{
+    transform: translateX(-100%);
 }

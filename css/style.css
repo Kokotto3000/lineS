@@ -16,11 +16,11 @@ a{
     font-size: 50px;
     text-decoration: none;
     color: #222;
+    position: relative; /*vont avoir des enfants en position absolute*/
 }
 
 .slide{
     font-family: sans-serif;
-    position: relative; /*va avoir des enfants en position absolute*/
 }
 
 .slide::before{
@@ -45,7 +45,6 @@ a{
 .download{
     font-family: "Staatliches";
     overflow: hidden;
-    position: relative;
 }
 
 .download span{
@@ -64,4 +63,40 @@ a{
 
 .download:hover span{
     transform: translateX(-100%);
+}
+
+.underlines::before, .underlines::after{
+    content:"";
+    position: absolute;
+    height: 2px;
+    background: #222;
+    opacity: 0;
+    left: 50%;
+    transform: translate(-50%, 10px);
+    transition: all 0.2s ease-out;    
+}
+
+.underlines::before{
+    width: 90%;
+    bottom: 0;
+}
+
+.underlines::after{
+    width: 60%;
+    bottom: -7px;
+}
+
+.underlines:hover::before, .underlines:hover::after{
+    opacity: 1;
+    transform: translate(-50%, 0px);
+}
+
+/* jeu de délais inversés pour l'effet apparition et disparition en décalé*/
+
+.underlines::before, .underlines:hover::after{
+    transition-delay: 0.1s; 
+}
+
+.underlines:hover::before{
+    transition-delay: 0s;
 }
